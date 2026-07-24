@@ -1,0 +1,19 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Dvec {
+  id                        String   @id @map("_id") @default(auto()) @db.ObjectId
+  frota                     String   @unique
+  atividade                 String
+  status_instalacao         Boolean  @default(false)
+  status_configuracao       Boolean  @default(false)
+  
+  @@map("collaborator")
+}
